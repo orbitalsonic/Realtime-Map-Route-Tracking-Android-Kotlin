@@ -16,6 +16,8 @@ import com.google.android.gms.location.*
 import com.google.android.gms.maps.model.LatLng
 import com.orbitalsonic.routetrackingforeground.Constants.ACTION_LOCATION_FOREGROUND_BROADCAST
 import com.orbitalsonic.routetrackingforeground.Constants.EXTRA_LOCATION
+import com.orbitalsonic.routetrackingforeground.Constants.FASTEST_UPDATE_INTERVAL_IN_MILLISECONDS
+import com.orbitalsonic.routetrackingforeground.Constants.UPDATE_INTERVAL_IN_MILLISECONDS
 import com.orbitalsonic.routetrackingforeground.Constants.locList
 import java.util.*
 
@@ -28,13 +30,6 @@ class LocationForegroundService : Service() {
 
     private var  mIntent:Intent =Intent(ACTION_LOCATION_FOREGROUND_BROADCAST)
 
-    // location updates interval - 10sec
-    private val UPDATE_INTERVAL_IN_MILLISECONDS: Long = 10000
-
-    // fastest updates interval - 5 sec
-    // location updates will be received if another app is requesting the locations
-    // than your app can handle
-    private val FASTEST_UPDATE_INTERVAL_IN_MILLISECONDS: Long = 3000
 
     // bunch of location related apis
     private var mFusedLocationClient: FusedLocationProviderClient? = null
